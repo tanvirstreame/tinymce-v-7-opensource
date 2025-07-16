@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Editor } from '@tinymce/tinymce-react';
 
-function App() {
+export default function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Editor
+      licenseKey="gpl"
+      tinymceScriptSrc='tinymce/js/tinymce/tinymce.min.js'
+
+      init={{
+        menubar: true,
+        plugins: [
+          'advlist autolink lists link image charmap preview anchor',
+          'searchreplace visualblocks code fullscreen',
+          'insertdatetime media table help wordcount'
+        ].join(' '),
+        toolbar:
+          'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help | code',
+        branding: false,
+        height: 300,
+        skin_url: 'tinymce/js/tinymce/skins/ui/oxide',
+        content_css: 'tinymce/js/tinymce/skins/content/default/content.css',
+      }}
+    />
   );
 }
-
-export default App;
